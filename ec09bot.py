@@ -34,9 +34,9 @@ except ImportError:
 import commands
 
 class EC09Bot(ircbot.SingleServerIRCBot):
-    NICK = "ec09bot"
+    NICK = "osdcbot"
     SERVERS = [("irc.freenode.net", 6667)]
-    CHANNEL = "#ec09"
+    CHANNEL = "#jiit-lug"
 
     BOT_UPRISE_MSGS = [
         "The end is nigh, meatbags.",
