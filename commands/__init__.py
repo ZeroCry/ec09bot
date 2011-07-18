@@ -5,11 +5,12 @@ sys.path.append("commands")
 
 command_modules = [
 #    "batima",
-    "bandeco",
+#    "bandeco",
 #    "chuck",
     "fortune",
     "leave",
     "list",
+    "welcome",
 ]
 
 commands = []
