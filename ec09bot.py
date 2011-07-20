@@ -23,6 +23,10 @@
 
 import sys
 import random
+from time import gmtime, strftime, localtime
+
+logfile = "osdclog.txt"
+file_to_log_to = open( logfile, 'a')
 
 try:
     import irclib
@@ -61,14 +65,19 @@ class EC09Bot(ircbot.SingleServerIRCBot):
             self.add_command(command_name, command_fn, *aliases)
 
     def start(self):
+    	global file_to_log_to
         self._connect()
         self.connection.join(self.CHANNEL)
         irclib.SimpleIRCClient.start(self)
+        
+        file_to_log_to.write("\n"+strftime("%a, %d %b %Y %H:%M:%S", localtime())+"\n")
 
     def _on_pubmsg(self, connection, event):
         sendernick, _ = event.source().split('!', 1)
         message = event.arguments()[0].strip()
-
+		
+        file_to_log_to.write("<"+sendernick+"> "+message+"\n")
+		
         if not message.startswith("!"):
             return
 
